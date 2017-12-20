@@ -1,0 +1,17 @@
+{
+  "name": "iturramasat",
+  "authors": [
+    "xabixab <xabixab@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

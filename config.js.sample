@@ -1,0 +1,9 @@
+// Initialize Firebase
+var fireBaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
+};

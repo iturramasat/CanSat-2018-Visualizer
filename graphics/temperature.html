@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script
+			  src="https://code.jquery.com/jquery-2.2.4.js"
+			  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+			  crossorigin="anonymous"></script>
+				<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+				<script src="../js/graphs.js"></script>
+<script>
+
+
+$(function () {
+	var tempgraph = new Graphic("temperature", true, "tempgraph");
+	setInterval(function () {
+		tempgraph.addInstantValue(Math.random(0, 200));
+		console.log("updated");
+	}, 100);
+});
+</script>
+</head>
+<body>
+<div id="tempgraph" style="height: 370px; width:100%;"></div>
+</body>
+</html>
