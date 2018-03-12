@@ -1,0 +1,12 @@
+.battery-low{
+  color:#b71c1c;
+}
+
+.inline{
+  display:inline;
+}
+
+#presuregraph, #tempgraph, #heigthgraph{
+  height:10vh;
+  width:100%;
+}

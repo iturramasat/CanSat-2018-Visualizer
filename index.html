@@ -18,61 +18,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEsuhhp_I-tm9UOjI-hWjqs9x
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
-<script>
-var graphs = {}
-let currentValues = {}
-
-
-  function parseNewValue(key, val) {
-    let value = val.value;
-    currentValues[key] = value;
-    graphs[key].addInstantValue(value);
-    $("#title-" + key).html(value);
-  }
-
-
-  $(function () {
-    if (typeof localStorage.sat == "undefined") {
-      location.href = "./selector.html"
-    }
-
-    let graphScheme = {
-      "temp": "tempgraph",
-      "presure": "presuregraph",
-      "heigth": "heigthgraph",
-      "v_vel": "vvelgraph"
-    }
-
-
-    Object.keys(graphScheme).forEach(function (graph) {
-      let graphID = graphScheme[graph];
-      graphs[graph] = new Graphic(graph, true, graphID);
-    });
-
-
-
-    firebase.initializeApp(fireBaseConfig);
-    let database = firebase.database();
-
-    var starCountRef = firebase.database().ref('sats/' + localStorage.sat);
-    starCountRef.on('value', function(snapshot) {
-      let values = snapshot.val();
-      Object.keys(values).forEach(function (key) {
-        let newValue = values[key];
-        if(typeof values[key] != "undefined"){
-          if(values[key] != currentValues[key]){
-            parseNewValue(key, values[key]);
-          }
-        } else {
-          parseNewValue(key, values[key]);
-        }
-      });
-    });
-  });
-
-
-
-</script>
 
 <script src="js/main.js"></script>
 </head>

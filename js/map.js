@@ -1,4 +1,4 @@
-class Map() {
+class Map {
   constructor(id){
     var that = this;
     var uluru = {lat: -25.363, lng: 131.044};
