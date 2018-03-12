@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Material Design for Bootstrap fonts and icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+
+    <!-- Material Design for Bootstrap CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/custom_material.css"/>
+
+    <title>Iturramasat</title>
+  </head>
+  <body>
+    <!-- dark -->
+    <ul class="nav nav-tabs bg-dark">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Calidad de señal</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="material.html">Atrás</a>
+
+      </li>
+
+    </ul>
+
+    <div class="container">
+      <div id="gauge" class="200x160px"></div>
+    </div>
+    <script>
+      var g = new JustGage({
+        id: "gauge",
+        value: 67,
+        min: 0,
+        max: 100,
+        title: "Visitors"
+      });
+    </script>
+
+    <br />
+    <script src="gauge/raphael.2.1.0.min.js"></script>
+    <script src="gauge/justgage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="config.js"></script>
+    <script src="js/firebase.js"></script>
+  </body>

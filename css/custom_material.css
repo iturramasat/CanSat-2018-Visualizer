@@ -10,3 +10,8 @@
   height:10vh;
   width:100%;
 }
+
+.graph {
+  display:block;
+  height:20vh;
+}
