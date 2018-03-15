@@ -1,6 +1,7 @@
 var graphs = {}
 let currentValues = {}
-
+let tx_rate = 100;
+let sd_rate = 100;
 
 function parseNewValue(key, val) {
   let value = val.value;
@@ -47,5 +48,13 @@ $(function () {
     database.ref(baseUrl + parameter).on('value', function (snapshot) {
       graphs[parameter].addInstantValue(snapshot.val().value);
     })
+  });
+
+  $("#powersave-mode").click(function () {
+    tx_rate = 20 * 1000;
+  });
+
+  $("#continuous-mode").click(function () {
+    tx_rate = 0.1 * 1000;
   });
 });
