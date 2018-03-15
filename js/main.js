@@ -45,7 +45,7 @@ $(function () {
   listen_to_graphs.forEach(function (parameter) {
     graphs[parameter] = new Graphic(parameter, true, "graph-" + parameter);
     database.ref(baseUrl + parameter).on('value', function (snapshot) {
-      graphs[parameter].addInstantValue(snapshot.val());
+      graphs[parameter].addInstantValue(snapshot.val().value);
     })
   });
 });

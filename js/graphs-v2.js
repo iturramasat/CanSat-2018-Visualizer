@@ -20,7 +20,7 @@ class Graphic {
         data: {
           labels: [],
   				datasets: [{
-              label: 'My First dataset',
+              label: name,
               backgroundColor: window.chartColors.red,
               borderColor: window.chartColors.red,
               data: [],
@@ -28,32 +28,33 @@ class Graphic {
           }]
         },
         options: {
+					animation: false,
           responsive: true,
           title: {
-            display: true,
-            text: 'Chart.js Line Chart'
-          },
+            display: false,
+            //text: 'Chart.js Line Chart'
+          },/*
           tooltips: {
             mode: 'index',
             intersect: false,
-          },
-          hover: {
+          },*/
+          /*hover: {
             mode: 'nearest',
             intersect: true
-          },
+          },*/
           scales: {
             xAxes: [{
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Month'
+                labelString: 'time'
               }
             }],
             yAxes: [{
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Value'
+                labelString: 'mbar'
               }
             }]
           }
@@ -61,7 +62,7 @@ class Graphic {
       };
 
     that.chart = new Chart(document.getElementById(container), that.config);
-    that.dataLength = 100; // number of dataPoints visible at any point
+		that.maxValues = 50;
   }
 
   addValue(xval, yval){
@@ -71,11 +72,21 @@ class Graphic {
     /*if (that.dps.length > that.dataLength) {
       that.dps.shift();
     }*/
+		console.log(xval + " : " + yval);
+		that.clean();
     that.chart.update();
   }
+
   addInstantValue(yval){
     var that = this;
-    var xval = new Date(Date.now());
+    let xval = new Date(Date.now());
     that.addValue(xval, yval);
   }
+
+	clean(){
+		let that = this;
+		let maxValues = that.maxValues;
+		that.config.data.labels = that.config.data.labels.slice(Math.max(that.config.data.labels.length - maxValues, 0));
+		that.config.data.datasets[0].data = that.config.data.datasets[0].data.slice(Math.max(that.config.data.datasets[0].data.length - maxValues, 0));
+	}
 }
