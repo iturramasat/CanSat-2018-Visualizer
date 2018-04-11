@@ -15,6 +15,7 @@ class Graphic {
     that.name = name;
     that.includeZero = includeZeroVal;
     that.container = container;
+		that.unit = $("#"+container).attr("unit");
     that.config = {
         type: 'line',
         data: {
@@ -29,7 +30,10 @@ class Graphic {
         },
         options: {
 					animation: false,
-          responsive: true,
+          responsive: false,
+					legend: {
+						 display: false
+					},
           title: {
             display: false,
             //text: 'Chart.js Line Chart'
@@ -44,7 +48,7 @@ class Graphic {
           },*/
           scales: {
             xAxes: [{
-              display: true,
+              display: false,
               scaleLabel: {
                 display: true,
                 labelString: 'time'
@@ -54,7 +58,7 @@ class Graphic {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'mbar'
+                labelString: that.unit
               }
             }]
           }

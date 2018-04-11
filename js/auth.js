@@ -11,12 +11,15 @@ $(function () {
       var isAnonymous = user.isAnonymous;
       var uid = user.uid;
       var providerData = user.providerData;
-      if(displayName == ""){
-        displayName = user.providerData.uid;
-      }
+
       //alert(user);
       console.log(user);
       // ...
+      if(user.providerData[0].providerId == "phone"){
+        displayName = user.providerData[0].phoneNumber;
+      }
+
+
       $("#welcome-name").html(displayName);
       $("#welcome-login").hide();
       $("#welcome").show();

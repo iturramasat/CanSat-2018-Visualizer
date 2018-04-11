@@ -16,13 +16,24 @@
     <title>Iturramasat</title>
     <style>
       .nav-fixed{
-        position:fixed;
+        position:absolute;
         top:0px;
         left:0px;
         right:0px;
+        z-index: 1000;
       }
-      html{
+
+      html, body {
             overflow:hidden;
+            width:100%;
+            height:100%;
+      }
+
+      .map {
+        position:absolute;
+        width:100%;
+        height:100%;
+
       }
     </style>
   </head>
@@ -30,7 +41,7 @@
     <!-- dark -->
     <ul class="nav nav-tabs bg-dark nav-fixed">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Visualizar posición</a>
+        <a class="nav-link active" href="#">Recuperar Satélite</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="material.html">Atrás</a>
@@ -39,16 +50,17 @@
 
     </ul>
 
-    <div class="container">
+    <div class="map" id="mainMap">
     </div>
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
     <!--<script src="https://cdn.firebase.com/libs/firebaseui/2.6.2/firebaseui.js"></script>-->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEsuhhp_I-tm9UOjI-hWjqs9x82P_CxJI&callback=initMap">
+    </script>
     <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/three/build/three.min.js"></script>
-    <script src="node_modules/three/examples/js/loaders/STLLoader.js"></script>
-    <script src="node_modules/three/examples/js/Detector.js"></script>
     <script src="config.js"></script>
-    <script src="js/accel.js"></script>
+    <script src="js/recover.js"></script>
+    <script src="js/map.js"></script>
   </body>

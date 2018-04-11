@@ -1,0 +1,33 @@
+{
+  "name": "cansat-2018-visualizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "config.js",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "bootstrap-material-design": "^4.1.1",
+    "chart.js": "^2.7.2",
+    "firebase": "^4.11.0",
+    "firebaseui": "^2.6.2",
+    "jquery": "^3.3.1",
+    "material-design-icons": "^3.0.1",
+    "popper.js": "^1.14.1",
+    "socket.io-client": "^2.1.0",
+    "three": "^0.90.0",
+    "typeface-roboto": "^0.0.54"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iturramasat/CanSat-2018-Visualizer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iturramasat/CanSat-2018-Visualizer/issues"
+  },
+  "homepage": "https://github.com/iturramasat/CanSat-2018-Visualizer#readme"
+}

@@ -15,7 +15,11 @@ $(function () {
 
   firebase.initializeApp(fireBaseConfig);
   var database = firebase.database();
+  var socket = io(socketServer[localStorage.sat]);
 
+  $("#continue-guestmode").click(function () {
+    $("#welcome-login").hide();
+  });
 
   if (typeof localStorage.sat == "undefined") {
     location.href = "./selector.html"
@@ -41,13 +45,19 @@ $(function () {
     console.log(values);
   });*/
 
-  let listen_to_graphs = ["bmp", "lm35"];
+  let listen_to_graphs = ["bmp", "lm35", "mpx"];
   let baseUrl = 'sats/' + localStorage.sat + "/";
   listen_to_graphs.forEach(function (parameter) {
+/*
     graphs[parameter] = new Graphic(parameter, true, "graph-" + parameter);
     database.ref(baseUrl + parameter).on('value', function (snapshot) {
       graphs[parameter].addInstantValue(snapshot.val().value);
-    })
+    });
+*/
+    graphs[parameter] = new Graphic(parameter, true, "graph-" + parameter);
+    socket.on(parameter, function (value) {
+      graphs[parameter].addInstantValue(value);
+    });
   });
 
   $("#powersave-mode").click(function () {
@@ -56,5 +66,10 @@ $(function () {
 
   $("#continuous-mode").click(function () {
     tx_rate = 0.1 * 1000;
+  });
+
+  database.ref(baseUrl + "send_rate").on("value", function (snapshot) {
+    let rate = snapshot.val().value;
+
   });
 });

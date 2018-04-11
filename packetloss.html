@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="vh-100">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -11,10 +11,10 @@
     <!-- Material Design for Bootstrap CSS -->
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
     <link rel="stylesheet" href="css/custom_material.css"/>
-
+    <link rel="stylesheet" href="css/packetloss.css"/>
     <title>Iturramasat</title>
   </head>
-  <body>
+  <body class="vh-100">
     <!-- dark -->
     <ul class="nav nav-tabs bg-dark">
       <li class="nav-item">
@@ -27,24 +27,19 @@
 
     </ul>
 
-    <div class="container">
-      <div id="gauge" class="200x160px"></div>
+    <div class="container-fluid align-items-center" align="center">
+        <div id="packetloss"></div>
     </div>
     <script>
-      var g = new JustGage({
-        id: "gauge",
-        value: 67,
-        min: 0,
-        max: 100,
-        title: "Visitors"
-      });
+
     </script>
 
     <br />
-    <script src="gauge/raphael.2.1.0.min.js"></script>
+    <script src="gauge/raphael-2.1.4.min.js"></script>
     <script src="gauge/justgage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="config.js"></script>
     <script src="js/firebase.js"></script>
+    <script src="js/packetloss.js"></script>
   </body>
