@@ -27,3 +27,30 @@
   width:100%;
   height:100%;
 }
+
+.param-info{
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.label-ascenso {
+  background-color: #FF0000;
+  font-size: 1.4em;
+  font-weight: bold;
+  color:white;
+}
+
+.label-descenso {
+  background-color: #00FF00;
+  font-size: 1.4em;
+  font-weight: bold;
+  color:black;
+}
+
+.label-estable {
+  background-color: #FFFF00;
+  font-size: 1.4em;
+  font-weight: bold;
+  color:black;
+}

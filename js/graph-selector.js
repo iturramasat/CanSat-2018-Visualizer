@@ -4,11 +4,31 @@ let selectors = [
   ["hradar", "hbmp", "hmpx"]
 ];
 
+let labels = {
+  "tbmp":"BMP180",
+  "tds":"DS18B20",
+  "tmpu":"MPU9250",
+  "pbmp":"BMP180",
+  "pmpx":"MPX",
+  "hrdr":"uRad 0.4",
+  "hgps":"Altura GPS",
+  "hmpx":"MPX",
+  "hbmp":"BMP180"
+}
+
 $(function () {
-  new GraphSelector(selectors[1], selectors[1][0], "pre", {
-    "bmp":"BMP180",
-    "mpx":"MPX-BLABLABLA"
-  });
+  new GraphSelector("pre", [
+    "pbmp", "pmpx"
+  ], labels);
+
+  new GraphSelector("tmp", [
+    "tbmp", "tmpu", "tds"
+  ], labels);
+
+  new GraphSelector("h", [
+    "hrdr", "hgps", "hmpx", "hbmp"
+  ], labels);
+
 });
 
 function enable() {
@@ -16,13 +36,13 @@ function enable() {
 }
 
 class GraphSelector {
-  constructor(options, def, id, labels){
+  constructor(id, options, labels){
     let that = this;
     that.options = options;
-    that.default = def;
+    that.default = options[0];
     that.id = id;
     that.labels = labels;
-    that.changeSelection(def);
+    that.changeSelection(that.default);
     that.setupDom();
   }
 

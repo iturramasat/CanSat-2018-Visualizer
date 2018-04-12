@@ -32,7 +32,7 @@ class GMap {
 
   updateMarkers(markers){
     let that = this;
-    that.mmarkerList = markers;
+    that.markerList = markers;
   }
 
   setupRecoverMap(){

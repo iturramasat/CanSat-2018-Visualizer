@@ -1,144 +1,15 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=1024, initial-scale=1, maximum-scale=1.0, user-scalable=no, shrink-to-fit=yes">
-
-    <!-- Material Design for Bootstrap fonts and icons -->
-    <link rel="stylesheet" href="node_modules/typeface-roboto/index.css">
-    <link rel="stylesheet" href="node_modules/material-design-icons/iconfont/material-icons.css">
-    <!-- Material Design for Bootstrap CSS -->
-    <link rel="stylesheet" href="node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/custom_material.css"/>
-    <title>Iturramasat</title>
-  </head>
-  <body>
-    <!-- dark -->
-    <ul class="nav nav-tabs bg-dark interface">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Estado del Cansat</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="recover.html">Recuperación</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="packetloss.html">Calidad de radioenlace</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="selector.html">Cambiar satélite seleccionado</a>
-      </li>
-    </ul>
-
-    <br />
-
-
-    <div class="container-fluid interface">
-
-      <div class="alert alert-warning" role="alert" id="welcome-login">
-        Estás accediendo como invitado. Por favor, identifícate para poder interactuar con el Cansat.
-        <a class="btn" href="login.html">Login</a>
-        <a class="btn btn-danger" href="#" id="continue-guestmode">Continuar como invitado</a>
-      </div>
-
-      <div class="alert alert-success" role="alert" id="welcome">
-        Hola <span id="welcome-name">placeholder</span>. <a class="btn" href="login.html">Entrar con otra cuenta</a>
-      </div>
-
-
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body" align="center">
-              <h3 id="battery-indicator" class="inline"><i class="material-icons battery-low">battery_full</i><span id="battery-percent">15</span>%&emsp;7.2 volt</h3>
-              <br/></br>
-                <button type="button" id="#powersave-mode" class="btn btn-raised btn-primary">modo ahorro</button>
-                &emsp;
-                <button type="button" id="#continuous-mode" class="btn btn-raised">contínuo</button>
-
-
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-
-          <div class="card">
-            <div class="card-body">
-              <div align="center" class="align-middle">
-                <h5 style="display:inline;">Presión</h5>
-                <div class="dropdown" style="display:inline;">
-                  <button class="btn bmd-btn-icon dropdown-toggle" type="button" id="ex1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="material-icons">settings</i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-left" aria-labelledby="ex1">
-                    <button class="dropdown-item" type="button" id="selector-pre-bmp">BMP180</button>
-                    <button class="dropdown-item" type="button" id="selector-pre-mpx">MPX</button>
-                    <button class="dropdown-item disabled" type="button">BMP085</button>
-                  </div>
-                </div>
-                <span id="selector-label-pre">BMP180</span>
-              </div>
-              <br/>
-                <canvas id="graph-bmp" class="graph" height="100%" unit="mbar"></canvas>
-              <canvas id="graph-mpx" class="graph"  height="100%" unit="mbar"></canvas>
-
-            <!--</div>
-          </div>
-          <br />
-          <div class="card">
-            <div class="card-body">-->
-              <h5 align="center">Temperatura</h5>
-              <canvas id="graph-lm35" class="graph" height="100%" unit="ºC"></canvas>
-
-          <!--</div>
-        </div>
-          <br/>
-          <div class="card">
-            <div class="card-body">-->
-              <h5 align="center">Altitud</h5>
-              <canvas id="graph-h" class="graph"></canvas>
-
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="battery-indicator" class="inline">Posición</h5>
-              <br/>
-              <div class="embedded-map" style="height:40vh;"></div>
-            </div>
-        </div>
-        </div>
-
-      </div>
-
-
-
-    </div>
-
-    <iframe id="partners" src="./partners.html" frameborder="0"></iframe>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/popper.js/dist/umd/popper.js"></script>
-    <script src="node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.js"></script>
-    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-
-    <script src="node_modules/chart.js/dist/Chart.bundle.min.js"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEsuhhp_I-tm9UOjI-hWjqs9x82P_CxJI&callback=initMap">
-    </script>
-    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
-    <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
-    <script src="config.js"></script>
-    <script src="js/main.js" type="text/javascript" ></script>
-    <script src="js/graphs-v2.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/graph-selector.js"></script>
-    <script src="js/partners.js"></script>
-
-  </body>
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="0; url=./index.html">
+        <script type="text/javascript">
+            window.location.href = "./index.html"
+        </script>
+        <title>Page Redirection</title>
+    </head>
+    <body>
+        <!-- Note: don't tell people to `click` the link, just tell them that it is a link. -->
+        If you are not redirected automatically, follow this <a href='./index.html'>link to example</a>.
+    </body>
 </html>
