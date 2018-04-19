@@ -1,11 +1,16 @@
 class GMap {
   constructor(id){
     var that = this;
-    var uluru = {lat: -25.363, lng: 131.044};
+    that.cansatPos = {
+      lat:-0.2,
+      lng:42.89
+    };
     that.map = new google.maps.Map(document.getElementById(id), {
       zoom: 4,
-      center: uluru
+      center: that.cansatPos
     });
+    that.markerList = {};
+    that.markers = {};
   }
 
   _updateMarkers(){
@@ -41,5 +46,25 @@ class GMap {
     locationRef.on('value', function(snapshot) {
       that.updateMarkers(snapshot.val());
     });
+  }
+
+  updateCansat(){
+    let that = this;
+    that.markerList["cansat"] = {};
+    that.markerList["cansat"].position = that.cansatPos;
+    that.markerList["cansat"].timestamp = Date.now();
+    that._updateMarkers();
+  }
+
+  updateCansatLat(lat){
+    let that = this;
+    that.cansatPos.lat = lat;
+    that.updateCansat();
+  }
+
+  updateCansatLng(lng){
+    let that = this;
+    that.cansatPos.lng = lng;
+    that.updateCansat();
   }
 }

@@ -37,13 +37,21 @@ $(function () {
 
   socket.emit("resend"); // request resend of last values
 
-  let listen_to_params = [];
+  let listen_to_params = ["hbmp", "atotal", "tbmp", "pbmp", "vvel", "gpslat", "gpslng"];
   listen_to_params.forEach(function (parameter) {
     socket.on(parameter, function (value) {
       if(parameter == "hbmp"){
-        
+        $("#label-hbmp").html(value);
+      } else if (parameter == "atotal"){
+        $("#label-atotal").html(value);
+      } else if (parameter == "tbmp"){
+        $("#label-tbmp").html(value);
+      } else if(parameter == "pbmp"){
+        $("#label-pbmp").html(value);
+      } else if(parameter == "vvel"){
+        $("#label-vvel").html("value");
       }
-    })
+    });
   });
 
   /*$("#powersave-mode").click(function () {
@@ -60,6 +68,7 @@ $(function () {
 
   map = new GMap("embedded-map");
   map.setupRecoverMap();
+  map.updateCansat();
 });
 
 let map;
