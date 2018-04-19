@@ -18,16 +18,16 @@
     <ul class="nav nav-tabs bg-dark interface">
       <li class="nav-item">
         <a class="nav-link active" href="#">Estado del Cansat</a>
-      </li>
+      </li><!--
       <li class="nav-item">
         <a class="nav-link" href="recover.html">Recuperación</a>
-      </li>
+      </li>-->
       <li class="nav-item">
         <a class="nav-link" href="packetloss.html">Calidad de radioenlace</a>
-      </li>
+      </li><!--
       <li class="nav-item">
         <a class="nav-link disabled" href="selector.html">Cambiar satélite seleccionado</a>
-      </li>
+      </li>-->
     </ul>
 
     <br />
@@ -48,10 +48,10 @@
       <div class="card">
         <div class="card-body" align="center">
           <div class="row">
-              <div class="col param-info">
+              <!--div class="col param-info">
                   <span id="label-atotal">1.02</span>G </br>
                   Aceleración total
-              </div>
+              </div>-->
               <div class="col param-info">
                   <span id="label-hbmp">1423.23</span>m</br>
                   Altura
@@ -80,13 +80,31 @@
           <div class="card">
             <div class="card-body" align="center">
               <div class="label-estable">ASCENDIENDO</div>
-              <h3 id="battery-indicator" class="inline"><i class="material-icons battery-low">battery_full</i><span id="battery-percent">15</span>%&emsp;7.2 volt</h3>
+              <h3 id="battery-indicator" class="inline"><i class="material-icons battery-low">battery_full</i>7.2 volt</h3>
               <br/></br>
                 <button type="button" id="#powersave-mode" class="btn btn-raised btn-primary">modo ahorro</button>
                 &emsp;
                 <button type="button" id="#continuous-mode" class="btn btn-raised">contínuo</button>
+              <hr/>
+              <div align="left">
+                <div class="label-cerrado" id="label-parachute_status">CERRADO</div>
+                <bold>Altura apertura:</bold> <span id="label-ph"></span> <br/>
+                <bold>Altura programado:</bold> <span id="label-pprog"></span> <br/>
+                <bold>Servo status:</bold><span id="label-pservostats"></span> <br/>
+              </div>
+              <div class="form-group">
+                <label for="parachute-inputh" class="bmd-label-floating">Altura de apertura</label>
+                <input type="text" class="form-control" id="parachute-inputh">
+              </div>
 
-
+              <div class="form-group">
+                <label for="parachute-inputh" class="bmd-label-floating">Altura de programación</label>
+                <input type="text" class="form-control" id="parachute-inputh">
+              </div>
+<br /> <a class="btn btn-raised btn-success">Actualizar parámetros</a><br>
+              <a class="btn btn-raised btn-danger">Desprogramar apertura</a> <a class="btn btn-raised btn-warning">Programar apertura</a><br/>
+              <!--<a class="btn btn-raised btn-warning">Modo manual</a> <a class="btn btn-success btn-raised">Modo automático</a><br/>-->
+              <a class="btn btn-raised btn-danger"> Abrir paracaídas</a> <a class="btn btn-raised btn-warning"> Cerrar paracaídas</a><br/>
             </div>
           </div>
         </div>

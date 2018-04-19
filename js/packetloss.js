@@ -18,4 +18,8 @@ $(function () {
     g.refresh(snapshot.val().value * 100);
   });
 
+  socket.on("packetloss", function (value) {
+    g.refresh(value * 100);
+  });
+
 })
