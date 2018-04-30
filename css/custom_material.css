@@ -55,6 +55,26 @@
   color:black;
 }
 
+.label-abierto {
+  background-color: #FF0000;
+  font-size: 1.4em;
+  font-weight: bold;
+  color:white;
+}
+
+.label-cerrado {
+  background-color: #00FF00;
+  font-size: 1.4em;
+  font-weight: bold;
+  color:black;
+}
+
+.label {
+  font-size: 1.4em;
+  font-weight: bold;
+  color:black;
+}
+
 bold {
   font-weight: bold;
 }

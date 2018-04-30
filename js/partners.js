@@ -6,7 +6,7 @@ $(function () {
     setTimeout(function () {
       $(".interface").show();
       $("#partners").hide(1000);
-    }, 5000)
+    }, 10000)
     $(".interface").hide();
     $(".partners").show();
   } else {

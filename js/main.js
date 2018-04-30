@@ -54,24 +54,115 @@ $(function () {
     });
   });
 
-  /*$("#powersave-mode").click(function () {
-    tx_rate = 20 * 1000;
-  });
-
-  $("#continuous-mode").click(function () {
-    tx_rate = 0.1 * 1000;
-  });
-
-  database.ref(baseUrl + "send_rate").on("value", function (snapshot) {
-    let rate = snapshot.val().value;
-  });*/
-
   map = new GMap("embedded-map");
   map.setupRecoverMap();
   map.updateCansat();
+
+  //
+  // PARACHUTE.
+  //
+
+
+  firebase.database().ref(baseUrl + "pc-openh").on('value', function(snapshot) {
+    $("#parachute-inputh").val(snapshot.val().value);
+    $("#label-ph").html(snapshot.val().value);
+  });
+
+  firebase.database().ref(baseUrl + "pc-progh").on('value', function(snapshot) {
+    $("#label-pprog").html(snapshot.val().value);
+  });
+
+  firebase.database().ref(baseUrl + "config/parachute_height").on("value", function (snapshot) {
+    $("#parachute-inputhprog").val(snapshot.val().value);
+  });
+
+  firebase.database().ref(baseUrl + "config/parachute_program").on("value", function (snapshot) {
+    $("#parachute-inputhprog").val(snapshot.val().value);
+  });
+
+
+  $("#parachute-update").click(function () {
+    let openH = $("#parachute-inputh").val();
+    let progH = $("#parachute-inputhprog").val();
+
+    firebase.database().ref(baseUrl + "config/parachute_height").set({
+      value:openH
+    });
+    firebase.database().ref(baseUrl + "config/parachute_program").set({
+      value:progH
+    });
+    console.log("Updating parachute values");
+  });
+
+
+  // POWER RATE
+
+  firebase.database().ref(baseUrl + "config/tx_rate").on("value", function (snapshot) {
+    if(snapshot.val().value === true){
+      $("#powersave-mode").removeClass("btn-primary");
+      $("#continuous-mode").addClass("btn-primary");
+      play("txrate_continuous");
+    } else {
+      $("#powersave-mode").addClass("btn-primary");
+      $("#continuous-mode").removeClass("btn-primary");
+      play("txrate_lowenergy");
+    }
+  });
+
+  $("#powersave-mode").click(function () {
+    firebase.database().ref(baseUrl + "config/tx_rate").set({
+      value:false
+    });
+  });
+
+
+  $("#continuous-mode").click(function () {
+    firebase.database().ref(baseUrl + "config/tx_rate").set({
+      value:true
+    });
+  });
+
+  $("#parachute-unprogram").click(function () {
+    sendCommand(0);
+  });
+
+  $("#parachute-program").click(function () {
+    sendCommand(1);
+  });
+
+  $("#parachute-open").click(function () {
+    sendCommand(2);
+  });
+
+  $("#parachute-close").click(function () {
+    sendCommand(3);
+  });
+
+  $("#recording-start").click(function () {
+    sendCommand(4);
+  });
+
+  $("#recording-stop").click(function () {
+    sendCommand(5);
+  });
+
 });
 
 let map;
+
 function initMap() {
 
+}
+
+const max_commands = 10;
+function sendCommand(number) {
+  let command = Math.round(Math.random()*300) * max_commands + number;
+  firebase.database().ref(baseUrl + "config/command").set({
+    value:command
+  });
+}
+
+function receiveCommand(number) {
+  let command = number % max_commands;
+  console.log(command + " command triggered");
 }

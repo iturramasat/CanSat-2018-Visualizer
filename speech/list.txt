@@ -1,0 +1,32 @@
+parachute_opened.wav --> Paracaídas abierto
+parachute_closed.wav --> Paracaídas cerrado
+parachute_programmed.wav --> Paracaídas programado
+parachute_unprogrammed.wav --> Paracaídas desprogramado
+parachute_hchange.wav --> Se ha cambiado la altura de apertura del paracaídas
+accelerometer.wav --> Calibrando acelerómetro
+
+connection_stablished.wav --> Se ha establecido conexión con el satélite
+connection_reestablished.wav --> Se ha reestablecido la conexión con el satélite
+connection_lost.wav --> Se ha perdido la conexión con el satélite
+
+height_stable.wav --> Altura estable
+height_desc.wav --> Descendiendo
+height_asc.wav --> Ascendiendo
+
+welcome.wav --> Bienvenido a la consola de visualización de datos de Iturramasat 2018.
+
+recording_started.wav --> Las cámaras han empezado a grabar.
+recording_stopped.wav --> Las cámaras han dejado de grabar.
+
+txrate_continuous.wav --> Frecuencia de transmisión: Contínua.
+txrate_lowenergy.wav --> Frecuencia de transmisión: Modo Ahorro.
+
+
+
+// Denbora ematen badu... :
+countdown_intro.wav --> El paracaídas se va abrir en 20 segundos.
+countdown_0.wav;  --> Cero
+countdown_1.wav;  --> Uno
+
+//Horrela 10 arte
+countdown_10.wav; --> Diez
