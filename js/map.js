@@ -54,6 +54,8 @@ class GMap {
     that.markerList["cansat"].position = that.cansatPos;
     that.markerList["cansat"].timestamp = Date.now();
     that._updateMarkers();
+    that.map.setCenter(that.cansatPos); 
+
   }
 
   updateCansatLat(lat){

@@ -1,12 +1,12 @@
 let selectors = [
-  ["lm35", "bmp"],
-  ["bmp", "mpx"],
+  ["tlm35", "tbmp"],
+  ["pbmp", "pmpx"],
   ["hradar", "hbmp", "hmpx"]
 ];
 
 let labels = {
   "tbmp":"BMP180",
-  "tds":"DS18B20",
+  "tlm35":"LM35",
   "tmpu":"MPU9250",
   "pbmp":"BMP180",
   "pmpx":"MPX",
@@ -22,7 +22,7 @@ $(function () {
   ], labels);
 
   new GraphSelector("tmp", [
-    "tbmp", "tmpu", "tds"
+    "tbmp", "tmpu", "tlm35"
   ], labels);
 
   new GraphSelector("h", [

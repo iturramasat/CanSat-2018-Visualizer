@@ -18,10 +18,10 @@
   <ul class="nav nav-tabs bg-dark interface">
     <li class="nav-item">
       <a class="nav-link active" href="#">Estado del Cansat</a>
-    </li><!--
+    </li>
       <li class="nav-item">
       <a class="nav-link" href="recover.html">Recuperación</a>
-    </li>-->
+    </li>
     <li class="nav-item">
       <a class="nav-link" href="packetloss.html">Calidad de radioenlace</a>
     </li><!--
@@ -68,13 +68,15 @@
           <span id="label-pbmp">855.23</span>mbar</br>
           Presión
         </div>
-        <div class="col param-info">
+      <!--  <div class="col param-info">
           -<span class="label-vvert">8.98</span>m/s</br>
           Descendiendo
-        </div>
+        </div>-->
+
         <div class="col param-info">
-          Paracaídas Descenso
-        </div>
+            <span id="label-hrdr">0.0</span>m</br>
+            Radar
+          </div>
       </div>
     </div>
   </div> </br>
@@ -82,16 +84,16 @@
   <div class="row">
     <div class="col-md-4">
       <div class="card">
-        <div class="card-body" align="center">
+        <div class="card-body" align="center"><!--
           <div class="row">
             <div class="col-sm">
-              <div class="label">GRABANDO</div>
+              <div class="label">CAM STBY.</div>
             </div>
             <div class="col-sm">
-              <div class="btn btn-raised btn-success">GRABAR</div>
+              <div class="btn btn-raised btn-success disabled" id="recording-start">GRABAR</div>
             </div>
             <div class="col-sm">
-              <div class="btn btn-raised btn-success">PARAR</div>
+              <div class="btn btn-raised btn-success disabled" id="recording-stop">PARAR</div>
             </div>
           </div>
 
@@ -99,7 +101,7 @@
 
           <div class="row">
             <div class="col-sm">
-              <h3 id="battery-indicator" class="inline"><i class="material-icons battery-low">battery_full</i>7.2 volt</h3>
+              <h3 id="battery-indicator" class="inline"><i class="material-icons battery-low">battery_full</i><span class="label-voltage">3.68</span>volt</h3>
             </div>
             <div class="col-sm">
               <button type="button" id="powersave-mode" class="btn btn-raised btn-primary">modo ahorro</button>
@@ -107,21 +109,21 @@
             <div class="col-sm">
               <button type="button" id="continuous-mode" class="btn btn-raised">contínuo</button>
             </div>
-          </div>
+          </div>-->
 
-          <hr/>
+
 
 
           <div class="row">
             <div class="col-sm">
-              <div class="label-estable">ASCENDIENDO</div>
+              <div class="label-estable" id="parachute-direction">ESTABLE</div>
             </div>
             <div class="col-sm">
-              <div class="label-abierto">ABIERTO</div>
-            </div>
+              <div class="label-abierto" id="parachute-status">ABIERTO</div>
+            </div><!--
             <div class="col-sm">
-              <div class="label-abierto">PROGRAMADO</div>
-            </div>
+              <div class="label-programado" id="parachute-program">PROGRAMADO</div>
+            </div>-->
           </div>
           <div style="height:1vh"></div>
 
@@ -154,9 +156,9 @@
             </div>
           </div>
 
-          <a class="btn btn-raised btn-danger" id="parachute-unprogram">Desprogramar</a> <a class="btn btn-raised btn-warning" id="parachute-program">Programar</a>
+          <!--<a class="btn btn-raised btn-danger" id="parachute-unprogram" href="#">Desprogramar</a> <a href="#" class="btn btn-raised btn-warning" id="parachute-programbtn">Programar</a>-->
           <!--<a class="btn btn-raised btn-warning">Modo manual</a> <a class="btn btn-success btn-raised">Modo automático</a><br/>-->
-          <a class="btn btn-raised btn-danger"> Abrir</a> <a class="btn btn-raised btn-warning"> Cerrar</a><br/>
+          <a class="btn btn-raised btn-danger" id="parachute-open"> Abrir</a> <a class="btn btn-raised btn-warning" id="parachute-close"> Cerrar</a><br/>
         </div>
       </div>
     </div>
@@ -196,16 +198,16 @@
             <div class="dropdown-menu dropdown-menu-left" aria-labelledby="ex1">
               <button class="dropdown-item" type="button" id="selector-tmp-tmpu">MPU9250</button>
               <button class="dropdown-item" type="button" id="selector-tmp-tbmp">BMP180</button>
-              <button class="dropdown-item" type="button" id="selector-tmp-tds">DS18B20</button>
+              <button class="dropdown-item" type="button" id="selector-tmp-tlm35">LM35</button>
               <!--<button class="dropdown-item disabled" type="button">BMP085</button>-->
             </div>
           </div>
           <span id="selector-label-tmp">BMP180</span>
         </div>
         <br/>
-        <canvas id="graph-tmpu" class="graph" height="100%" unit="ºC"></canvas>
-        <canvas id="graph-tbmp" class="graph" height="100%" unit="ºC"></canvas>
-        <canvas id="graph-tds" class="graph" height="100%" unit="ºC"></canvas>
+        <canvas id="graph-tmpu" class="graph" height="100%" unit="ºC" includeZero="true"></canvas>
+        <canvas id="graph-tbmp" class="graph" height="100%" unit="ºC" includeZero="true"></canvas>
+        <canvas id="graph-tlm35" class="graph" height="100%" unit="ºC" includeZero="true"></canvas>
 
         <!--</div>
       </div>
@@ -231,10 +233,10 @@
       </div>
 
 
-      <canvas id="graph-hrdr" class="graph"></canvas>
-      <canvas id="graph-hmpx" class="graph"></canvas>
-      <canvas id="graph-hbmp" class="graph"></canvas>
-      <canvas id="graph-hgps" class="graph"></canvas>
+      <canvas id="graph-hrdr" class="graph" includeZero="true"></canvas>
+      <canvas id="graph-hmpx" class="graph" includeZero="true"></canvas>
+      <canvas id="graph-hbmp" class="graph" includeZero="true"></canvas>
+      <canvas id="graph-hgps" class="graph" includeZero="true"></canvas>
 
     </div>
   </div>

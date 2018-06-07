@@ -52,14 +52,17 @@ class Graphic {
               scaleLabel: {
                 display: true,
                 labelString: 'time'
-              }
+              },
             }],
             yAxes: [{
               display: true,
               scaleLabel: {
                 display: true,
                 labelString: that.unit
-              }
+              },
+							ticks : {
+								beginAtZero : includeZeroVal
+							}
             }]
           }
         }
@@ -76,7 +79,7 @@ class Graphic {
     /*if (that.dps.length > that.dataLength) {
       that.dps.shift();
     }*/
-		console.log(xval + " : " + yval);
+		//console.log(xval + " : " + yval);
 		that.clean();
     that.chart.update();
   }

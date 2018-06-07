@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body>
+    <!-- dark -->
+    <ul class="nav nav-tabs bg-dark nav-fixed">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Visualizar posición</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" id="calibrate-accel" href="#">Calibrar acelerómetro</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="material.html">Atrás</a>
+
+      </li>
+
+    </ul>
+
+    <div class="container">
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+    <!--<script src="https://cdn.firebase.com/libs/firebaseui/2.6.2/firebaseui.js"></script>-->
+    <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="config.js"></script>
+    <script>
+      $(function () {
+        let url =  window.location.href;
+        let data = url.split(";");
+        let lat = data[data.lenght - 2];
+        let lng = data[data.lenght - 1];
+      });
+    </script>
+  </body>
